@@ -1,25 +1,58 @@
-# INTRODUCTION
-## PRÉSENTATION DE TYPESCRIPT
-TypeScript est un langage  à typage statique conçu par Anders Heljsberg (également concepteur du langage C#). Son but est de rendre plus fiable et facile l'écriture du code en JavaScript. Le code en TS sera compilé en JS. (comme SCSS)
+# PRÉSENTATION DE TYPESCRIPT
+TypeScript est un langage  à typage statique conçu par Anders Heljsberg (également concepteur du langage C#). Son but est de rendre plus fiable et facile l'écriture du code en JavaScript. Le code en TS sera compilé en JS. (comme SCSS pour CSS)
+
+## Parties
+- [Présentation de Typescript](#pr%C3%A9sentation-de-typescript)
+- [tsconfig](#tsconfig)
+- [Typage](#typage)
+- [Classe](#classe)
+- [Compilation](#compilation-de-votre-code)
+
+<br>
 
 ## Quels sont les avantages de TS?
 - Limites les erreurs
 - Meilleure autocomplétion et documentation
 - Cible la version de compilation du code TS en JS (ES5,ES6, etc)
 
+
+<br>
+
 ## Quels sont les désavantages de TS?
 - Outil supplémentaire
 - L'écosystème JavaScript
 - Perte en flexibilité (mais gagne en prévisibilité)
 - Code moins lisible
-  
+
+<br>
+
 ## A QUEL MOMENT UTILISER TYPESCRIPT ?
 TS permet d'apporter une rigueur dans votre code et sa prévisibilité permet d'éviter les bugs. Son ciblage permet de nous passer d'outil comme "Babel" par exemple. C'est pourquoi nous vous conseillons d'utiliser TS pour de gros projets.
 
-## TSCONFIG
+<br>
+
+## INSTALLATION DE TYPESCRIPT
+
+Il y a deux façons principales d'obtenir le TypeScript disponible pour votre projet :
+
+- Via npm (le gestionnaire de paquets Node.js)
+- En installant les plugins Visual Studio de TypeScript
+
+Visual Studio 2017 et Visual Studio 2015 Update 3 incluent la prise en charge du langage TypeScript par défaut mais n'incluent pas le compilateur TypeScript, tsc. Si vous n'avez pas installé TypeScript avec Visual Studio, vous pouvez toujours le télécharger.
+
+Pour les utilisateurs de npm :
+<br>
+
+```js
+npm install -g typescript
+```
+<br>
+<br>
+
+# TSCONFIG
 La présence d'un fichier tsconfig.json dans un répertoire indique que ce dernier est la racine d'un projet TypeScript. Le fichier tsconfig.json spécifie les fichiers racine et les options de compilation nécessaires pour compiler le projet.
 
-Exemple:
+Exemple d'un fichier **tsconfig.json**:
 
 
 ```
@@ -60,9 +93,15 @@ Exemple:
 
 **sourceMap**: Permet la génération de fichiers sourcemap. Ces fichiers permettent aux débogueurs et autres outils d'afficher le code source TypeScript original lorsqu'ils travaillent avec les fichiers JavaScript émis.
 
-  
 
-## TYPAGE
+Ces paramètres vous permettent d'avoir plus de contrôles sur votre code. Il en existe beaucoups d'autres
+Vous pourrez trouver de la documentation à ce sujet [ici](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
+
+<br>
+<br>
+
+# TYPAGE
+
 Le principal apport du langage TypeScript est la possibilité d'associer un type à une donnée.
 
 ```
@@ -79,6 +118,34 @@ let obj: any;
 Le typage peut aussi se faire implicitement:
 ``let message = "Hello World"  // message sera un string``
 
+<br>
+
+## TYPE
+Il est possible de créer des variables de types:
+
+```
+type Message = string;
+
+let message: Message;
+
+```
+
+Vous pouvez aussi créer des **unions** de types:
+
+```
+type Message = string | null
+
+let message: Message;
+```
+
+**message** peut donc être un string *ou* null.
+
+Créer ces variables rendra votre code plus lisible
+
+Les types peuvent se faire sous forme d'objet
+
+<br>
+
 ## INTERFACE
 L'interface est une autre façon de typer un objet
 
@@ -90,13 +157,15 @@ interface{
 
 }
 ```
+<br>
 
 ## TYPE VS INTERFACE ?
 Quelle est la différence entre les types et les interfaces ?
 Les types sont plus rigides que les interfaces car une fois déclarer aucune extension n'est posssible.
+
 Exemple:
 
-Ce code provoquera une erreur
+*Ce code provoquera une erreur*
 
 ```
 type Person = {
@@ -109,7 +178,7 @@ type Person = {
 }
 
 ```
-Si nous souhaitons rajouter plus loin la variable **age** dans notre objet nous ne pouvons pas y faire référence à un autre endroit dans le code. Or c'est possible avec les interfaces.
+Si nous souhaitons rajouter plus loin la variable **age** dans notre objet nous ne pouvons pas y faire référence à un autre endroit dans le code avec *type*. Or c'est possible avec les interfaces.
 
 Dans cette situation, préférez donc ceci:
 
@@ -127,107 +196,47 @@ interface Person{
 Notre interface **Person** a déjà été déclarer, elle sera reconnu par TS et implémentera **age**.
 
 
-## CLASSES
+<br>
+<br>
 
-Enfin, étendons l'exemple une dernière fois avec les classes. TypeScript prend en charge de nouvelles fonctionnalités de JavaScript, comme la prise en charge de la programmation orientée objet basée sur des classes.
+# Classe
 
-Ici, nous allons créer une classe Student avec un constructeur et quelques champs publics. Remarquez que les classes et les interfaces fonctionnent bien ensemble, laissant le programmeur décider du bon niveau d'abstraction.
+Le JavaScript traditionnel utilise des fonctions et l'héritage basé sur des prototypes pour construire des composants réutilisables, mais cela peut sembler un peu gênant pour les programmeurs plus à l'aise avec une approche orientée objet, où les classes héritent de fonctionnalités et où les objets sont construits à partir de ces classes. À partir d'ECMAScript 2015, également connu sous le nom d'ECMAScript 6, les programmeurs JavaScript peuvent construire leurs applications en utilisant cette approche orientée objet basée sur les classes. Dans TypeScript, nous permettons aux développeurs d'utiliser ces techniques dès maintenant, et de les compiler en JavaScript qui fonctionne sur tous les principaux navigateurs et plates-formes, sans avoir à attendre la prochaine version de JavaScript.
 
-Notez également que l'utilisation de public comme argument du constructeur est un raccourci qui nous permet de créer automatiquement des propriétés portant ce nom.
+Prenons un exemple simple basé sur les classes :
 
-```
-class Student {
-  fullName: string;
-  constructor(
-    public firstName: string,
-    public middleInitial: string,
-    public lastName: string
-  ) {
-    this.fullName = firstName + " " + middleInitial + " " + lastName;
+```typescript
+class Greeter {
+  greeting: string;
+ 
+  constructor(message: string) {
+    this.greeting = message;
+  }
+ 
+  greet() {
+    return "Hello, " + this.greeting;
   }
 }
  
-let user = new Student("Jane", "M.", "User");
- 
+let greeter = new Greeter("world");
 
 ```
 
+La syntaxe devrait vous sembler familière si vous avez déjà utilisé C# ou Java. Nous déclarons une nouvelle classe Greeter. Cette classe possède trois membres : une propriété appelée greeting, un constructeur et une méthode greet.
+
+Vous remarquerez que dans la classe, lorsque nous faisons référence à l'un des membres de la classe, nous ajoutons this. Cela indique qu'il s'agit d'un accès membre.
+
+Dans la dernière ligne, nous construisons une instance de la classe Greeter en utilisant new. Cela fait appel au constructeur que nous avons défini plus tôt, en créant un nouvel objet avec la forme Greeter, et en exécutant le constructeur pour l'initialiser.
 
 
-# HOW TO USE IT
+<br>
+<br>
 
-Commençons par créer une première application Web simple avec TypeScript.
+#  Compilation de votre code
 
-
-## Installation de TypeScript
-
-Il y a deux façons principales d'obtenir le TypeScript disponible pour votre projet :
-
-- Via npm (le gestionnaire de paquets Node.js)
-- En installant les plugins Visual Studio de TypeScript
-
-Visual Studio 2017 et Visual Studio 2015 Update 3 incluent la prise en charge du langage TypeScript par défaut mais n'incluent pas le compilateur TypeScript, tsc. Si vous n'avez pas installé TypeScript avec Visual Studio, vous pouvez toujours le télécharger.
-
-Pour les utilisateurs de npm :
-
-``npm install -g typescript``
-
-
-## Création de votre premier fichier TypeScript
-
-Dans votre éditeur, tapez le code JavaScript suivant dans greeter.ts :
-
-```
-function greeter(person) {
-  console.log("Hello, " + person);
-}
- 
-let user = "John Doe";
- 
-greeter(user);
-```
-
-## Compilation de votre code
-
-Nous avons utilisé une extension .ts, mais ce code n'est que du JavaScript. Vous auriez pu le copier/coller directement à partir d'une application JavaScript existante.
-
-En ligne de commande, lancez le compilateur TypeScript :
+Il faut maintenant compiler votre code en Javascript.
+Pour celà lancez le compilateur TypeScript dans la ligne de commande :
 
 ``tsc greeter.ts``
 
 Le résultat sera un fichier greeter.js qui contient le même JavaScript que celui que vous avez entré. Nous sommes prêts à utiliser TypeScript dans notre application JavaScript !
-
-Nous pouvons maintenant commencer à tirer parti de certains des nouveaux outils offerts par TypeScript. Ajoutez une annotation de type : string à l'argument de la fonction 'person' comme indiqué ici :
-
-```
-function greeter(person: string) {
-  console.log("Hello, " + person);
-}
- 
-let user = "John Doe";
-
-greeter(user);
-```
-
-## Annotations de type
-
-Les annotations de type dans TypeScript sont des moyens légers d'enregistrer le type prévu de la fonction ou de la variable. Dans ce cas, nous souhaitons que la fonction greeter soit appelée avec un seul paramètre de type string. Nous pouvons essayer de modifier l'appel de la fonction greeter pour passer un tableau à la place :
-
-
-
-
-## Variable de type
-Vous pouvez créer une variable de type*:
-```
-type Age = number
-```
-Il est aussi possible de combiner plusieurs types avec les opérateurs:
-```
-type Message = string | null
-```
-
-## Classe
-
-## Connexion à l'api REST API 
-
-

@@ -5,11 +5,17 @@ importez fetchQuizQuestions et ouvrez la console dans le navigateur pour voir le
 ```tsx
 // Types 
 import { QuestionState, Difficulty } from './API';
+import { fetchQuizQuestions } from './API';
 
 
 
-//dans la function App() {
+```
+
+
+maintenant faire une console.log
+```tsx
     console.log(fetchQuizQuestions(TOTAL_QUESTION, Difficulty.EASY));
+
 
 ```
 
@@ -20,6 +26,8 @@ import { QuestionState, Difficulty } from './API';
 ici, nous créons un *array* pour passer la fonction aléatoire avec random et générer aléatoirement nos questions 
 
 ```tsx
+
+
 // quick fix random const
 export const shuffleArray = (array: any[]) =>
 
@@ -33,7 +41,6 @@ Change folder vers **App.tsx**
 nous appelons notre nouvelle fonction pour l'application,
 et passer le nouveau paramètre de difficulté et son type et une nouvelle constante où nous donnerons le nombre de questions de l'application et ses types
 ```tsx
-import { fetchQuizQuestions } from './API';
 
 
 export type AnswerObject = {

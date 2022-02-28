@@ -107,7 +107,7 @@ ici, nous pouvons rendre le bouton de démarrage et le bouton suivant plus jolis
 `
 ```
 
-Change focher vers **App.tsx**
+Retournons maintenant vers **App.tsx**
 
 Il est maintenant temps d'importer notre style ts dans notre application principale
 
@@ -148,7 +148,7 @@ return (
     </>
 );
 ```
-Créer le document **QuestionCard.styles.tsx** et mettez le code suivant
+Créer le document **QuestionCard.styles.tsx** et mettez le code suivant.
 Maintenant, nous allons faire notre style de carte de quiz. 
 avec ce code, nous stylisons la lettre de la question et les éléments qu'elle contient
 
@@ -172,7 +172,7 @@ export const Wrapper = styled.div`
 `
 ```
 
-Dans le code suivant, nous donnons un style aux boutons de question de sorte qu'ils deviennent verts pour les bonnes réponses et rouges pour les mauvaises réponses. 
+Dans le code suivant, nous donnons un style aux boutons de questions de sorte qu'ils deviennent vert pour les bonnes réponses et rouge pour les mauvaises réponses. 
 
 ```ts
 type ButtonWrapperProps = {
@@ -217,4 +217,4 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
 `
 ```
 
-et c'est tout, vous avez maintenant un quiz complet et bien conçu pour jouer et montrer vos compétences en matière de typescriopt
+Hé bien voilà ! Vous avez maintenant un quiz complet et bien conçu pour jouer et montrer vos compétences en matière de typescript.

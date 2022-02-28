@@ -15,7 +15,7 @@ import { QuestionState, Difficulty } from './API';
 
 
 
- Créer le fichier et mettre **utils.ts**
+ <!-- Créer le fichier et mettre **utils.ts**
 
 ici, nous créons un *array* pour passer la fonction aléatoire avec random et générer aléatoirement nos questions 
 
@@ -26,7 +26,7 @@ export const shuffleArray = (array: any[]) =>
     [...array].sort(() => Math.random() - 0.5);
 
 // aller regarder la promise localhost
-```
+``` -->
 
 Change folder vers **App.tsx**
 

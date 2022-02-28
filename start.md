@@ -8,6 +8,10 @@ Programmation d'un quizz React TypeScript à l'aide d'une API externe.
 - cd app
 - ``npm install``
 
+
+<br>
+<br>
+
 ### Première étape
 
 Voici à quoi doit ressembler votre App.tsx au départ
@@ -59,6 +63,10 @@ const QuestionCard = () => (
 
 export default QuestionCard;
 ```
+
+<br>
+<br>
+
 ## Seconde étape
 
 Nous pouvons maintenant importer notre component QuestionCard.tsx dans l'App.tsx
@@ -83,48 +91,6 @@ const nextQuestion = () => {};
 
 ```
 
-<!-- 
-**App.tsx**
-```
-///App.tsx 2
-
-import React, { useState } from 'react';
-
-
-// Components
-import QuestionCard from './components/QuestionCard';
-
-// Types 
-
-
-// Styles
-
-
-function App() {
-
-    const startGame = async () => {};
-
-    const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
-
-    const nextQuestion = () => {};
-
-    return (
-
-            <div className="App" >
-            
-                <h1>React Quiz</h1>
-            
-                <QuestionCard/>
-                
-                <button className="next" onClick={nextQuestion}>Next Question</button>
-               
-            
-            </div>
-    );
-}
-
-export default App;
-``` -->
 
 Nous allons maintenant préparer les props pour notre component:
 **QuestionCard**
@@ -136,88 +102,46 @@ type Props = {
 
     question: string;
     answers: string[];
-    callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
-    userAnswer: AnswerObject | undefined;
+    callback: (/* e: React.MouseEvent<HTMLButtonElement> */) => void;
+    userAnswer: /* AnswerObject | */ undefined;
     questionNumber: number;
     totalQuestions: number;
 };
 ```
 On passe ensuite en paramètre les props dans la fonction **QuestionCard**
 ```tsx
-const QuestionCard: React.FC<Props> = '{
+const QuestionCard: React.FC<Props> = ({
     question,
     answers,
     callback,
     userAnswer,
     questionNumber,
     totalQuestions
+}) => {
+    return()
 }
 ```
+<br>
+<br>
 
-<!-- Voici à quoi doit ressembler votre **QuestionCard**
-```
-import React from 'react';
-
-// types
-
-// styles
-
-// type
-type Props = {
-
-    question: string;
-    answers: string[];
-    callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
-    userAnswer: AnswerObject | undefined;
-    questionNumber: number;
-    totalQuestions: number;
-};
-
-const QuestionCard: React.FC<Props> = ({
-    
-    question,
-    answers,
-    callback,
-    userAnswer,
-    questionNumber,
-    totalQuestions
-}) => (
-
-    <div>
-        <p className="number">
-            Question: {questionNumber} / {totalQuestions}
-        </p>
-        <p dangerouslySetInnerHTML={{ __html: question }}/>
-        <div>
-            {answers.map(answer => (
-        
-                <button disabled={userAnswer ? true : false} value={answer} onClick={callback}>
-                    <span dangerouslySetInnerHTML= {{ __html: answer }}></span>
-                </button>
-            ))}
-        </div>
-    </div>
-);
-
-export default QuestionCard;
-``` -->
 ## Troisième étape
-Nous allons maintenant implémenter les Hooks et fetch l'API du Quizz
+Nous allons maintenant implémenter les Hooks.
+Il faut décommenter useState pour implémenter les hooks.
 
 **App.tsx**
 
 ```tsx
 const [loading, setLoading] = useState(false);
-const [questions, setQuestions] = useState<QuestionState[]>([]);
+const [questions, setQuestions] = useState/* <QuestionState[]> */([]);
 const [number, setNumber] = useState(0);
-const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
+const [userAnswers, setUserAnswers] = useState/* <AnswerObject[]> */([]);
 const [score, setScore] = useState(0);
 const [gameOver, setGameOver] = useState(true);
 
 ```
 
 Nous avons assignés 2 types que nous n'avons pas défini encore **QuestionState** et **AnswerObject**.
-Crée un fichier API.ts (src/**API.ts**);
+Crée un fichier API.ts (src/**API.ts**) et dans ce fichier nous allons fetch l'API;
 
 Définissons **QuestionState**:
 **API.ts**
@@ -249,6 +173,27 @@ export enum Difficulty {
 ```
 **enum** permet de définir un ensemble de constantes nommées. L'utilisation des enums peut faciliter la documentation, ou la création d'un ensemble de cas distincts. TypeScript fournit à la fois des enums numériques et des enums basés sur des chaînes de caractères.
 
+<br>
+
+Créer le fichier et mettre **utils.ts** dans le dossier *src*
+
+ici, nous créons un *array* pour passer la fonction aléatoire avec random et générer aléatoirement nos questions 
+
+```tsx
+// quick fix random const
+export const shuffleArray = (array: any[]) =>
+
+    [...array].sort(() => Math.random() - 0.5);
+
+// aller regarder la promise localhost
+```
+**App.tsx**
+```
+import {shuffleArray} from "./utils.ts"
+```
+
+
+
 
 Dans ce fichier nous allons fetch l'API externe:
 
@@ -270,26 +215,12 @@ export const fetchQuizQuestions = async (amount: number, difficulty: Difficulty)
     
 };
 ```
-
+Modifier le bloc return
 
 **App.tsx**
 
 ```tsx
 
-function App() {
-
-    const [loading, setLoading] = useState(false);
-    const [questions, setQuestions] = useState<QuestionState[]>([]);
-    const [number, setNumber] = useState(0);
-    const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
-    const [score, setScore] = useState(0);
-    const [gameOver, setGameOver] = useState(true);
-
-    const startGame = async () => {};
-
-    const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
-
-    const nextQuestion = () => {};
 
     return (
 
@@ -312,52 +243,9 @@ function App() {
             
             </div>
     );
-}
+
 
 ```
 
-<!-- **API.ts**
-```
-import { shuffleArray } from './utils';
-
-//il faut détailler l'objet question
-export type Question = {
-
-    category: string;
-    correct_answer: string;
-    difficulty: string;
-    incorrect_answers: string[];
-    question: string;
-    type: string;
-}
-
-// export question via Question State
-export type QuestionState = Question & { answers: string[]};
-
-// export objet question difficulter
-export enum Difficulty {
-
-    EASY = "easy",
-    MEDIUM = "medium",
-    HARD = "hard",
-}
-
-// fetch asynchrone sur l'API + les deux objets que l'on a besoin 
-export const fetchQuizQuestions = async (amount: number, difficulty: Difficulty) => {
-
-    const endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`;
-    const data = await (await fetch(endpoint)).json();
-    
-    return data.results.map((question: Question) => ({
-
-        ...question,
-        answers: shuffleArray([
-            
-            ...question.incorrect_answers, question.correct_answer,
-        ]),
-    }));
-    
-};
-``` -->
 
 Maintenant, allez au milieu du code [ici](./moitié.md)

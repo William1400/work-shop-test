@@ -191,7 +191,10 @@ export const shuffleArray = (array: any[]) =>
 // aller regarder la promise localhost
 ```
 
-
+**API.ts**
+```tsx
+import {shuffleArray} from "./utils.ts"
+```
 
 
 

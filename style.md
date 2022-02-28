@@ -3,8 +3,10 @@ n'oubliez pas d'importer chaque style à votre destination
 
 Créer **App.styles.ts**
 
-En typescript, nous importons le style avec un createGlobalStyle dans un fichier de type script
-avec ce code nous rendons la position des éléments plus harmonieux comme par exemple l'image de fond, la position du titre et du bouton.
+La librairie styled-components nous permet le déploiement des composant stylisés, certes. Mais, qu'en est-il des styles globaux? Afin de déclarer des styles affectant l'entièreté du site, nous allons utiliser la fonction createGlobalStyle.
+
+En typescript, nous importons le style avec un createGlobalStyle dans un fichier de typescript
+avec ce code nous rendons la position des éléments plus harmonieuse comme par exemple l'image de fond, la position du titre et du bouton.
 
 ```ts
 

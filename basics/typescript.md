@@ -22,7 +22,7 @@ La présence d'un fichier tsconfig.json dans un répertoire indique que ce derni
 Exemple:
 
 
-```
+```tsx
 {
   "compilerOptions": {
     "module": "commonjs",

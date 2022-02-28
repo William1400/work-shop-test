@@ -133,6 +133,7 @@ Il faut décommenter useState pour implémenter les hooks.
 **App.tsx**
 CHANGE !!!!!!!!!!!!!!
 ```tsx
+    //Dans la function App() {
 const [loading, setLoading] = useState(false);
 const [questions, setQuestions] = useState/* <QuestionState[]> */([]);
 const [number, setNumber] = useState(0);

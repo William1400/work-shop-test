@@ -158,7 +158,7 @@ export type Question = {
     question: string;
     type: string;
 }
-shuffleArray()
+
 
 // export question via Question State
 export type QuestionState = Question & { answers: string[]};

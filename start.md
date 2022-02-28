@@ -118,8 +118,8 @@ const QuestionCard: React.FC<Props> = ({
     questionNumber,
     totalQuestions
 }) => {
-    return()
-}
+   <div></div>
+)
 ```
 <br>
 <br>

@@ -224,3 +224,5 @@ et pour finir d'importer les objets sur votre carte de questions
 import { AnswerObject } from '../App';
 
 ```
+
+maintenant, allez à la section [faisons les styles](./style.md)  

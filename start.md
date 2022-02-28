@@ -362,3 +362,4 @@ export const fetchQuizQuestions = async (amount: number, difficulty: Difficulty)
 };
 ``` -->
 
+Maintenant, allez au milieu du code [ici](./moitié.md)

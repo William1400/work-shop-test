@@ -1,77 +1,23 @@
-
-
-Change folder vers le
-App.tsx
+### Change folder vers le
+**App.tsx**
 
 importez fetchQuizQuestions et ouvrez la console dans le navigateur pour voir les paramètres, et la variété des difficultés qui ont été générées 
 ```
-
-
-import React, { useState } from 'react';
-import { fetchQuizQuestions } from './API';
-
-
-// Components
-import QuestionCard from './components/QuestionCard';
-
 // Types 
 import { QuestionState, Difficulty } from './API';
 
 
-// Styles
 
-
-function App() {
-
-    const [loading, setLoading] = useState(false);
-    const [questions, setQuestions] = useState<QuestionState[]>([]);
-    const [number, setNumber] = useState(0);
-    const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
-    const [score, setScore] = useState(0);
-    const [gameOver, setGameOver] = useState(true);
-
-    //
+//dans la function App() {
     console.log(fetchQuizQuestions(TOTAL_QUESTION, Difficulty.EASY));
 
-
-    const startGame = async () => { };
-
-    const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => { };
-
-    const nextQuestion = () => { };
-
-    return (
-
-        <div className="App" >
-
-            <h1>React Quiz</h1>
-
-            <QuestionCard
-
-                questionNumber={number + 1}
-                totalQuestions={TOTAL_QUESTIONS}
-                question={questions[number].question}
-                answers={questions[number].answers}
-                userAnswer={userAnswers ? userAnswers[number] : undefined}
-                callback={checkAnswer}
-            />
-
-            <button className="next" onClick={nextQuestion}>Next Question</button>
-
-
-        </div>
-    );
-}
-
-export default App;
 ```
 
 
 
-Change folder vers le
-utils.ts
+ Créer le fichier et mettre **utils.ts**
 
-ici, nous créons un array pour passer la fonction aléatoire avec random et générer aléatoirement nos questions 
+ici, nous créons un *array* pour passer la fonction aléatoire avec random et générer aléatoirement nos questions 
 
 ```
 // quick fix random const
@@ -82,21 +28,13 @@ export const shuffleArray = (array: any[]) =>
 // aller regarder la promise localhost
 ```
 
-Change folder
-1 App.tsx
+Change folder vers **App.tsx**
 
 nous appelons notre nouvelle fonction pour l'application,
 et passer le nouveau paramètre de difficulté et son type et une nouvelle constante où nous donnerons le nombre de questions de l'application et ses types
 ```
-import React, { useState } from 'react';
 import { fetchQuizQuestions } from './API';
 
-
-// Components
-import QuestionCard from './components/QuestionCard';
-
-// Types 
-import { QuestionState, Difficulty } from './API';
 
 export type AnswerObject = {
 
@@ -114,28 +52,20 @@ const TOTAL_QUESTIONS = 15;
 // Styles
 ```
 
-2 App.tsx
-maintenant nous commençons à déclarer les actions qui vont se produire comme le game over et la continuation du jeu (sans game over)
+Toujours en **App.tsx**
+transformer le journal de la console en commentaire  et maintenant nous commençons à déclarer les actions qui vont se produire comme le game over et la continuation du jeu (sans game over), et faire une nouvelle console pour voir les questions.
 
 ```
 
 
-function App() {
+// Dans le function App() {
 
-    const [loading, setLoading] = useState(false);
-    const [questions, setQuestions] = useState<QuestionState[]>([]);
-    const [number, setNumber] = useState(0);
-    const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
-    const [score, setScore] = useState(0);
-    const [gameOver, setGameOver] = useState(true);
-
-    //
     // console.log(fetchQuizQuestions(TOTAL_QUESTION, Difficulty.EASY));
     console.log(questions);
 
 
-    // creer la fonction qui lance le jeu 
-    const startGame = async () => {
+    // creer la fonction qui lance le jeu dans le
+    //const startGame = async () => {
 
         setLoading(true);
         setGameOver(false);
@@ -149,15 +79,19 @@ function App() {
         setLoading(false);
     };
 
-    const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => { };
+    //avant le 
+    //const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => { };
 
-    const nextQuestion = () => { };
+    //const nextQuestion = () => { };
 
 ```
 
 
 
-3 App.tsx
+Encore dans **App.tsx**
+
+remplacez le code dans le return par celui ci-dessous 
+
 maintenant nous donnons vie à l'application et à sa fonctionnalité, et les fonctions comme démarrer le jeu, répondre aux questions, avancer, vérifier si c'est correct ou non et la fin du jeu en cas d'erreurs. regardez bien les codes car on a passé les paramètres et on a créé les fonctionnalités avec typescript
 ```
     return (
@@ -193,13 +127,11 @@ maintenant nous donnons vie à l'application et à sa fonctionnalité, et les fo
     );
 }
 
-export default App;
 
 ```
 
 
-Change folder vers le
-QuestionCard.tsx
+Change folder vers le **QuestionCard.tsx**
 
 nous retournons à notre QuestionCard où nous allons déclarer les paramètres et déclarer nos valeurs booléennes
 ```
@@ -218,14 +150,14 @@ nous retournons à notre QuestionCard où nous allons déclarer les paramètres 
 ```
 
 
-Change folder vers le
-App.tsx
+Nous revenons à **App.tsx**
+maintenant dans la constante *checkAnswer*
 
 ici nous créons notre score complet pour voir le nombre de hits 
 ```
 // Implementer checkAnswer Fonction
 
-const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
+//dans le cadre de la constante const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
 
     if (!gameOver) {
 
@@ -249,18 +181,21 @@ const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
 
         setUserAnswers((prev) => [...prev, answerObject]);
     }
-};
+//};
 
 //test localhost
 ```
-2
-ajouter aussi ces lignes supplémentaires pour rendre le code précédent fonctionnel 
+
+Maintenant, dans la fonction **nextQuestion**, mettez ce code 
+
+ajouter aussi ces lignes supplémentaires pour rendre le code précédent fonctionnel
+
 
 ```
 
 
 // Implementer NextQuestion Fonction
-const nextQuestion = () => {
+//maintenant dans la fonction const nextQuestion = () => {
 
     // Move on the next question if not the last question
     const nextQuestion = number + 1;
@@ -272,14 +207,14 @@ const nextQuestion = () => {
 
         setNumber(nextQuestion);
     }
-};
+//};
 
 //test localhost
 ```
 
 
-Change folder vers le
-QuestionCard.tsx
+Change ficher vers le
+**QuestionCard.tsx**
 
 et pour finir d'importer les objets sur votre carte de questions
 ```

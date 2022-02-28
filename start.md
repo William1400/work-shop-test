@@ -2,13 +2,13 @@
 
 Programmation d'un quizz React TypeScript à l'aide d'une API externe.
 
-## Installation
+### Installation
 
 - clone ce repo
 - cd app
 - ``npm install``
 
-## Première étape
+### Première étape
 
 Voici à quoi doit ressembler votre App.tsx au départ
 
@@ -83,7 +83,7 @@ const nextQuestion = () => {};
 
 ```
 
-
+<!-- 
 **App.tsx**
 ```
 ///App.tsx 2
@@ -124,7 +124,7 @@ function App() {
 }
 
 export default App;
-```
+``` -->
 
 Nous allons maintenant préparer les props pour notre component:
 **QuestionCard**
@@ -154,7 +154,7 @@ const QuestionCard: React.FC<Props> = '{
 }
 ```
 
-Voici à quoi doit ressembler votre **QuestionCard**
+<!-- Voici à quoi doit ressembler votre **QuestionCard**
 ```
 import React from 'react';
 
@@ -200,7 +200,7 @@ const QuestionCard: React.FC<Props> = ({
 );
 
 export default QuestionCard;
-```
+``` -->
 ## Troisième étape
 Nous allons maintenant implémenter les Hooks et fetch l'API du Quizz
 
@@ -278,18 +278,6 @@ export const fetchQuizQuestions = async (amount: number, difficulty: Difficulty)
 
 ```
 
-import React, { useState } from 'react';
-
-
-// Components
-import QuestionCard from './components/QuestionCard';
-
-// Types 
-
-
-// Styles
-
-
 function App() {
 
     const [loading, setLoading] = useState(false);
@@ -328,10 +316,9 @@ function App() {
     );
 }
 
-export default App;
 ```
 
-**API.ts**
+<!-- **API.ts**
 ```
 import { shuffleArray } from './utils';
 
@@ -373,5 +360,5 @@ export const fetchQuizQuestions = async (amount: number, difficulty: Difficulty)
     }));
     
 };
-```
+``` -->
 

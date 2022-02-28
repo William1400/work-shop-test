@@ -1,8 +1,7 @@
 et pour rendre l'application plus belle 
 n'oubliez pas d'importer chaque style à votre destination 
 
-Change folder 
-App.styles.ts
+Créer **App.styles.ts**
 
 En typescript, nous importons le style avec un createGlobalStyle dans un fichier de type script
 avec ce code nous rendons la position des éléments plus harmonieux comme par exemple l'image de fond, la position du titre et du bouton.
@@ -43,8 +42,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 `;
 ```
-2
-avec le code suivant vous rendrez notre titre, score et textes plus stylisés 
+
+Avec le code suivant vous rendrez notre titre, score et textes plus stylisés 
 ```
 
 // creer un div de style dans une constante
@@ -85,7 +84,7 @@ export const Wrapper = styled.div`
     }
 ```
 
-3
+
 ici, nous pouvons rendre le bouton de démarrage et le bouton suivant plus jolis et plus harmonieux. 
 ```
 
@@ -108,10 +107,9 @@ ici, nous pouvons rendre le bouton de démarrage et le bouton suivant plus jolis
 `
 ```
 
-Change folder 
-App.tsx
+Change focher vers **App.tsx**
 
-il est maintenant temps d'importer notre style ts dans notre application principale
+Il est maintenant temps d'importer notre style ts dans notre application principale
 
 ```
 // Import Styles
@@ -150,8 +148,7 @@ return (
     </>
 );
 ```
-Change folder 
-QuestionCard.styles.tsx
+Créer le document **QuestionCard.styles.tsx** et mettez le code suivant
 Maintenant, nous allons faire notre style de carte de quiz. 
 avec ce code, nous stylisons la lettre de la question et les éléments qu'elle contient
 
@@ -173,8 +170,8 @@ export const Wrapper = styled.div`
     }
 `
 ```
-2
-dans le code suivant, nous donnons un style aux boutons de question de sorte qu'ils deviennent verts pour les bonnes réponses et rouges pour les mauvaises réponses. 
+
+Dans le code suivant, nous donnons un style aux boutons de question de sorte qu'ils deviennent verts pour les bonnes réponses et rouges pour les mauvaises réponses. 
 
 ```
 type ButtonWrapperProps = {

@@ -1,9 +1,8 @@
 # Présentation de TypeScript
 TypeScript est un langage  à typage statique conçu par Anders Heljsberg (également concepteur du langage C#). Son but est de rendre plus fiable et facile l'écriture du code en JavaScript. Le code en TS sera compilé en JS. (comme SCSS pour CSS)
 
-## Parties
+
 - [Présentation de TypeScript](#présentation-de-typescript)
-  - [Parties](#parties)
   - [Quels sont les avantages de TS?](#quels-sont-les-avantages-de-ts)
   - [Quels sont les désavantages de TS?](#quels-sont-les-désavantages-de-ts)
   - [À quel moment utiliser TypeScript ?](#à-quel-moment-utiliser-typescript-)

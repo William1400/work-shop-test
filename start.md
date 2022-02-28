@@ -111,14 +111,16 @@ type Props = {
 On passe ensuite en paramètre les props dans la fonction **QuestionCard**
 ```tsx
 const QuestionCard: React.FC<Props> = ({
+    
     question,
     answers,
     callback,
     userAnswer,
     questionNumber,
     totalQuestions
-}) => {
-   <div></div>
+}) => (
+
+    <div></div>
 )
 ```
 <br>

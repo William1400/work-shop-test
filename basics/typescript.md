@@ -1,12 +1,20 @@
-# PRÉSENTATION DE TYPESCRIPT
+# Présentation de TypeScript
 TypeScript est un langage  à typage statique conçu par Anders Heljsberg (également concepteur du langage C#). Son but est de rendre plus fiable et facile l'écriture du code en JavaScript. Le code en TS sera compilé en JS. (comme SCSS pour CSS)
 
 ## Parties
-- [Présentation de Typescript](#pr%C3%A9sentation-de-typescript)
+- [Présentation de TypeScript](#présentation-de-typescript)
+  - [Parties](#parties)
+  - [Quels sont les avantages de TS?](#quels-sont-les-avantages-de-ts)
+  - [Quels sont les désavantages de TS?](#quels-sont-les-désavantages-de-ts)
+  - [À quel moment utiliser TypeScript ?](#à-quel-moment-utiliser-typescript-)
+  - [Installation de TypeScript](#installation-de-typescript)
 - [tsconfig](#tsconfig)
 - [Typage](#typage)
+  - [Type](#type)
+  - [Interface](#interface)
+  - [Type vs Interface ?](#type-vs-interface-)
 - [Classe](#classe)
-- [Compilation](#compilation-de-votre-code)
+- [Compilation de votre code](#compilation-de-votre-code)
 
 <br>
 
@@ -26,12 +34,12 @@ TypeScript est un langage  à typage statique conçu par Anders Heljsberg (égal
 
 <br>
 
-## A QUEL MOMENT UTILISER TYPESCRIPT ?
+## À quel moment utiliser TypeScript ?
 TS permet d'apporter une rigueur dans votre code et sa prévisibilité permet d'éviter les bugs. Son ciblage permet de nous passer d'outil comme "Babel" par exemple. C'est pourquoi nous vous conseillons d'utiliser TS pour de gros projets.
 
 <br>
 
-## INSTALLATION DE TYPESCRIPT
+## Installation de TypeScript
 
 Il y a deux façons principales d'obtenir le TypeScript disponible pour votre projet :
 
@@ -49,7 +57,7 @@ npm install -g typescript
 <br>
 <br>
 
-# TSCONFIG
+# tsconfig
 La présence d'un fichier tsconfig.json dans un répertoire indique que ce dernier est la racine d'un projet TypeScript. Le fichier tsconfig.json spécifie les fichiers racine et les options de compilation nécessaires pour compiler le projet.
 
 Exemple d'un fichier **tsconfig.json**:
@@ -100,7 +108,7 @@ Vous pourrez trouver de la documentation à ce sujet [ici](https://www.typescrip
 <br>
 <br>
 
-# TYPAGE
+# Typage
 
 Le principal apport du langage TypeScript est la possibilité d'associer un type à une donnée.
 
@@ -120,7 +128,7 @@ Le typage peut aussi se faire implicitement:
 
 <br>
 
-## TYPE
+## Type
 Il est possible de créer des variables de types:
 
 ```
@@ -146,7 +154,7 @@ Les types peuvent se faire sous forme d'objet
 
 <br>
 
-## INTERFACE
+## Interface
 L'interface est une autre façon de typer un objet
 
 ```
@@ -159,7 +167,7 @@ interface{
 ```
 <br>
 
-## TYPE VS INTERFACE ?
+## Type vs Interface ?
 Quelle est la différence entre les types et les interfaces ?
 Les types sont plus rigides que les interfaces car une fois déclarer aucune extension n'est posssible.
 

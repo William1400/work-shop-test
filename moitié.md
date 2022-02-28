@@ -2,7 +2,7 @@
 **App.tsx**
 
 importez fetchQuizQuestions et ouvrez la console dans le navigateur pour voir les paramètres, et la variété des difficultés qui ont été générées 
-```
+```tsx
 // Types 
 import { QuestionState, Difficulty } from './API';
 
@@ -19,7 +19,7 @@ import { QuestionState, Difficulty } from './API';
 
 ici, nous créons un *array* pour passer la fonction aléatoire avec random et générer aléatoirement nos questions 
 
-```
+```tsx
 // quick fix random const
 export const shuffleArray = (array: any[]) =>
 
@@ -32,7 +32,7 @@ Change folder vers **App.tsx**
 
 nous appelons notre nouvelle fonction pour l'application,
 et passer le nouveau paramètre de difficulté et son type et une nouvelle constante où nous donnerons le nombre de questions de l'application et ses types
-```
+```tsx
 import { fetchQuizQuestions } from './API';
 
 
@@ -55,7 +55,7 @@ const TOTAL_QUESTIONS = 15;
 Toujours en **App.tsx**
 transformer le journal de la console en commentaire  et maintenant nous commençons à déclarer les actions qui vont se produire comme le game over et la continuation du jeu (sans game over), et faire une nouvelle console pour voir les questions.
 
-```
+```tsx
 
 
 // Dans le function App() {
@@ -93,7 +93,7 @@ Encore dans **App.tsx**
 remplacez le code dans le return par celui ci-dessous 
 
 maintenant nous donnons vie à l'application et à sa fonctionnalité, et les fonctions comme démarrer le jeu, répondre aux questions, avancer, vérifier si c'est correct ou non et la fin du jeu en cas d'erreurs. regardez bien les codes car on a passé les paramètres et on a créé les fonctionnalités avec typescript
-```
+```tsx
     return (
 
         <div className="App" >
@@ -134,7 +134,7 @@ maintenant nous donnons vie à l'application et à sa fonctionnalité, et les fo
 Change folder vers le **QuestionCard.tsx**
 
 nous retournons à notre QuestionCard où nous allons déclarer les paramètres et déclarer nos valeurs booléennes
-```
+```tsx
 // changer le bloc avec:
 
 <div>
@@ -154,7 +154,7 @@ Nous revenons à **App.tsx**
 maintenant dans la constante *checkAnswer*
 
 ici nous créons notre score complet pour voir le nombre de hits 
-```
+```tsx
 // Implementer checkAnswer Fonction
 
 //dans le cadre de la constante const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -191,7 +191,7 @@ Maintenant, dans la fonction **nextQuestion**, mettez ce code
 ajouter aussi ces lignes supplémentaires pour rendre le code précédent fonctionnel
 
 
-```
+```tsx
 
 
 // Implementer NextQuestion Fonction
@@ -217,7 +217,7 @@ Change ficher vers le
 **QuestionCard.tsx**
 
 et pour finir d'importer les objets sur votre carte de questions
-```
+```tsx
 
 // import types 
 

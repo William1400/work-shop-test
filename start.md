@@ -13,7 +13,7 @@ Programmation d'un quizz React TypeScript à l'aide d'une API externe.
 Voici à quoi doit ressembler votre App.tsx au départ
 
 **App.tsx**
-```
+```tsx
 import React, { useState } from 'react';
 
 // Components
@@ -41,7 +41,7 @@ Nous allons y intégrer notre premier component: **QuestionCard.tsx**
 
 **QuestionCard.tsx**
 
-```
+```tsx
 import React from 'react';
 
 // types
@@ -64,7 +64,7 @@ export default QuestionCard;
 Nous pouvons maintenant importer notre component QuestionCard.tsx dans l'App.tsx
 
 
-```
+```tsx
 import QuestionCard from './components/QuestionCard';
 ```
 Nous aurons besoin de 3 fonctions que nous allons déjà initiés:
@@ -74,7 +74,7 @@ Nous aurons besoin de 3 fonctions que nous allons déjà initiés:
   
 
 Dans **App.tsx**, à l'interieur de la fonction App
-```
+```tsx
 const startGame = async () => {};
 
 const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
@@ -131,7 +131,7 @@ Nous allons maintenant préparer les props pour notre component:
 
 Comme vu précédement, il faut définir le **type** des props:
 
-```
+```tsx
 type Props = {
 
     question: string;
@@ -143,7 +143,7 @@ type Props = {
 };
 ```
 On passe ensuite en paramètre les props dans la fonction **QuestionCard**
-```
+```tsx
 const QuestionCard: React.FC<Props> = '{
     question,
     answers,
@@ -206,7 +206,7 @@ Nous allons maintenant implémenter les Hooks et fetch l'API du Quizz
 
 **App.tsx**
 
-```
+```tsx
 const [loading, setLoading] = useState(false);
 const [questions, setQuestions] = useState<QuestionState[]>([]);
 const [number, setNumber] = useState(0);
@@ -221,7 +221,7 @@ Crée un fichier API.ts (src/**API.ts**);
 
 Définissons **QuestionState**:
 **API.ts**
-```
+```tsx
 //il faut détailler l'objet question
 export type Question = {
 
@@ -238,7 +238,7 @@ export type QuestionState = Question & { answers: string[]};
 ```
 Ensuite préparons un objet qui nous servira pour l'API: **Difficulty**;
 
-```
+```tsx
 // export objet question difficulter
 export enum Difficulty {
 
@@ -252,7 +252,7 @@ export enum Difficulty {
 
 Dans ce fichier nous allons fetch l'API externe:
 
-```
+```tsx
 // fetch asynchrone sur l'API + les deux objets que l'on a besoin 
 export const fetchQuizQuestions = async (amount: number, difficulty: Difficulty) => {
 
@@ -271,12 +271,10 @@ export const fetchQuizQuestions = async (amount: number, difficulty: Difficulty)
 };
 ```
 
-**shuffleArray()**
-
 
 **App.tsx**
 
-```
+```tsx
 
 function App() {
 

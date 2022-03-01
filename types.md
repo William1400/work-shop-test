@@ -142,6 +142,12 @@ nous retournons à notre QuestionCard où nous allons déclarer les paramètres 
 // changer le bloc avec:
 
 <div>
+    
+    <p className="number">
+            Question: {questionNumber} / {totalQuestions}
+    </p>
+    <p dangerouslySetInnerHTML={{ __html: question }}/>
+    
     {answers.map(answer => (
         <div key={answer}>
             <button disabled={userAnswer ? true : false} value={answer} onClick={callback}>

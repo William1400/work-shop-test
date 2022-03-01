@@ -229,7 +229,8 @@ et pour finir d'importer les objets sur votre carte de questions
 ```
 Dans **App.tsx**, décommenter *<QuestionCard/>
 
-```
+```tsx
+
     <QuestionCard
                        
                        questionNumber={number + 1}

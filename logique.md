@@ -159,7 +159,7 @@ export type Question = {
     question: string;
     type: string;
 }
-shuffleArray()
+
 
 // export question via Question State
 export type QuestionState = Question & { answers: string[]};
@@ -192,13 +192,13 @@ export const shuffleArray = (array: any[]) =>
 
 
 ```
-**App.tsx**
+**API.ts**
 ```tsx
 import {shuffleArray} from "./utils.ts"
 // aller regarder la promise localhost
 ```
 
-Dans ce fichier nous allons fetch l'API externe:
+Dans API.ts, nous allons fetch l'API externe:
 
 ```tsx
 // fetch asynchrone sur l'API + les deux objets que l'on a besoin 
@@ -219,7 +219,12 @@ export const fetchQuizQuestions = async (amount: number, difficulty: Difficulty)
 };
 ```
 <br>
-
+Nous allons instancier *TOTAL_QUESTIONS* 
+**App.tsx**
+```tsx
+// à placer au dessus de la fonction App
+const TOTAL_QUESTIONS = 15;
+```
 Modifier le bloc return dans 
 
 **App.tsx**

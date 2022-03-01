@@ -9,7 +9,7 @@ import { QuestionState, Difficulty } from './API';
 
 
 //dans la function App() {
-    console.log(fetchQuizQuestions(TOTAL_QUESTION, Difficulty.EASY));
+    console.log(fetchQuizQuestions(TOTAL_QUESTIONS, Difficulty.EASY));
 
 ```
 
@@ -51,7 +51,11 @@ const TOTAL_QUESTIONS = 15;
 
 // Styles
 ```
+Ensuite nous allons dans **QuestionCard.tsx** et nous importons *AnswerObject*
 
+```
+import {AnswerObject} from "../App"
+```
 Toujours en **App.tsx**
 transformer le journal de la console en commentaire  et maintenant nous commençons à déclarer les actions qui vont se produire comme le game over et la continuation du jeu (sans game over), et faire une nouvelle console pour voir les questions.
 
@@ -92,7 +96,7 @@ Encore dans **App.tsx**
 
 remplacez le code dans le return par celui ci-dessous 
 
-maintenant nous donnons vie à l'application et à sa fonctionnalité, et les fonctions comme démarrer le jeu, répondre aux questions, avancer, vérifier si c'est correct ou non et la fin du jeu en cas d'erreurs. regardez bien les codes car on a passé les paramètres et on a créé les fonctionnalités avec typescript
+maintenant nous donnons vie à l'application et à sa fonctionnalité, et les fonctions comme démarrer le jeu, répondre aux questions, avancer, vérifier si c'est correct ou non et la fin du jeu en cas d'erreurs. Regardez bien les codes car on a passé les paramètres et on a créé les fonctionnalités avec typescript
 ```tsx
     return (
 
@@ -151,7 +155,7 @@ nous retournons à notre QuestionCard où nous allons déclarer les paramètres 
 
 
 Nous revenons à **App.tsx**
-maintenant dans la constante *checkAnswer*
+maintenant dans la fonction *checkAnswer*
 
 ici nous créons notre score complet pour voir le nombre de hits 
 ```tsx
@@ -213,7 +217,7 @@ ajouter aussi ces lignes supplémentaires pour rendre le code précédent foncti
 ```
 
 
-Change ficher vers le
+Change fichier vers le
 **QuestionCard.tsx**
 
 et pour finir d'importer les objets sur votre carte de questions
@@ -221,8 +225,20 @@ et pour finir d'importer les objets sur votre carte de questions
 
 // import types 
 
-import { AnswerObject } from '../App';
 
+```
+Dans **App.tsx**, décommenter *<QuestionCard/>
+
+```
+    <QuestionCard
+                       
+                       questionNumber={number + 1}
+                       totalQuestions={TOTAL_QUESTIONS}
+                       question={questions[number].question}
+                       answers={questions[number].answers}
+                       userAnswer={userAnswers ? userAnswers[number] : undefined}
+                       callback={checkAnswer}
+     />
 ```
 
 maintenant, allez à la section [faisons les styles](./style.md)  
